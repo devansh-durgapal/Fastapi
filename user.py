@@ -43,7 +43,7 @@ def create_user(user: UserCreate, db: Annotated[Session, Depends(get_db)]):
         name=user.name,
         email=user.email.lower(),
         password_hash=hash_password(user.password),
-        role=user.role,  # Added: persist the role passed at signup
+        role=user.role,
     )
     db.add(new_user)
     db.commit()
